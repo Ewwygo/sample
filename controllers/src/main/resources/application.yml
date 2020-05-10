@@ -22,9 +22,3 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-
-logging:
-  level:
-    org.springframework: ERROR
-    com.netcracker.denisik: DEBUG
-  file: logs.txt

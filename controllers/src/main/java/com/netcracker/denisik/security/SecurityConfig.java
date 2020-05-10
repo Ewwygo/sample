@@ -1,6 +1,5 @@
-package com.netcracker.denisik.security.config;
+package com.netcracker.denisik.security;
 
-import com.netcracker.denisik.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -29,30 +28,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(
-                        "/v2/api-docs",
-                        "/swagger-resources/configuration/ui",
-                        "/swagger-resources",
-                        "/hello",
-                        "/swagger-resources/configuration/security",
-                        "/swagger-ui.html",
-                        "/webjars/**")
+                .antMatchers("/signUp")
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/signUp/**")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
                 .permitAll()
-                .antMatchers("/users/**", "/faculties/**")
-                .hasAuthority(Role.ADMIN.name())
-                .antMatchers("/students/**", "/subjects/**", "/specialities/**")
-                .hasAnyAuthority(Role.EMPLOYEE.name(), Role.ADMIN.name())
-                .antMatchers("/student/**")
-                .hasAuthority(Role.STUDENT.name())
                 .and()
-                .httpBasic()
-                .and()
-                .csrf()
-                .disable();
+                .logout()
+                .permitAll();
     }
 
     @Override

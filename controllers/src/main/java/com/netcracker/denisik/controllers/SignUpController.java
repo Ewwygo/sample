@@ -1,13 +1,17 @@
 package com.netcracker.denisik.controllers;
 
+import com.netcracker.denisik.entity.Role;
 import com.netcracker.denisik.userDetails.UserServiceImpl;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api
-@RestController
+@Controller
 public class SignUpController {
 
     private final PasswordEncoder passwordEncoder;
@@ -19,14 +23,19 @@ public class SignUpController {
         this.userService = userService;
     }
 
-//    @ApiOperation(value = "Update faculty", nickname = "FacultyController.updateFaculty")
-//    @ApiResponses(value = {@ApiResponse(code = 200, message = "Faculty update")})
-//    @PutMapping("/signUp")
-//    public ResponseEntity<Object> signUp(long studentId, String login, String password) {
-//        String hashPassword = passwordEncoder.encode(password);
-//        if (!userService.registration(studentId, login, hashPassword)) {
-//            return new ResponseEntity<>("Registration error(wrong data)", HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>("Registration is successful", HttpStatus.OK);
-//    }
+    @GetMapping("/signUp")
+    public String signUp(){
+        return "registration";
+    }
+
+    @PostMapping("/signUp")
+    public String signUp(@RequestParam String login, @RequestParam String password, @RequestParam Role role) {
+        String hashPassword = passwordEncoder.encode(password);
+        try {
+            userService.saveUser(login,password,role);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/hello";
+    }
 }
