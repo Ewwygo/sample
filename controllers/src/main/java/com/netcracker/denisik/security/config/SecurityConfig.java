@@ -1,6 +1,6 @@
 package com.netcracker.denisik.security.config;
 
-import com.netcracker.denisik.dto.RoleDTO;
+import com.netcracker.denisik.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/v2/api-docs",
                         "/swagger-resources/configuration/ui",
                         "/swagger-resources",
+                        "/hello",
                         "/swagger-resources/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**")
@@ -42,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/signUp/**")
                 .permitAll()
                 .antMatchers("/users/**", "/faculties/**")
-                .hasAuthority(RoleDTO.ADMIN.name())
+                .hasAuthority(Role.ADMIN.name())
                 .antMatchers("/students/**", "/subjects/**", "/specialities/**")
-                .hasAnyAuthority(RoleDTO.EMPLOYEE.name(), RoleDTO.ADMIN.name())
+                .hasAnyAuthority(Role.EMPLOYEE.name(), Role.ADMIN.name())
                 .antMatchers("/student/**")
-                .hasAuthority(RoleDTO.STUDENT.name())
+                .hasAuthority(Role.STUDENT.name())
                 .and()
                 .httpBasic()
                 .and()
