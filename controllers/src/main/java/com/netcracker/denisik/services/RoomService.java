@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,15 +27,26 @@ public class RoomService {
         roomRepository.save(room);
     }
 
-    public List<Room> findFilteredRoom(Integer dayCost, Integer seatsAmount){
+    public List<Room> findFilteredRoom(Integer dayCost, Integer seatsAmount,LocalDate checkIn, LocalDate checkOut){
         List<Room> rooms = roomRepository.findAllByDayCostAndSeatsAmount(dayCost,seatsAmount);
+        List<Residence> residences = residenceRepository.findAllActive();
+        for (Residence residence : residences
+            ) {
+            if (checkIn.isAfter(residence.getArrival()) && checkIn.isBefore(residence.getDeparture()) ||
+                checkOut.isAfter(residence.getArrival()) && checkOut.isBefore(residence.getDeparture()) ||
+                checkIn.isBefore(residence.getArrival()) && checkOut.isAfter(residence.getDeparture())){
+                rooms.remove(residence.getRoom());
+            }
+        }
         return rooms;
     }
 
     @Transactional
-    public void bookRoom(User user, Long roomId){
+    public void bookRoom(User user, Long roomId, LocalDate checkIn, LocalDate checkOut){
         Residence residence = new Residence();
         residence.setStatus(Status.ACTIVE);
+        residence.setArrival(checkIn);
+        residence.setDeparture(checkOut);
         residence.setUser(user);
         residence.setRoom(roomRepository.findOne(roomId));
         residenceRepository.save(residence);

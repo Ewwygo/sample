@@ -26,64 +26,6 @@
 
     <h1 class="title">St. Ermin's Hotel</h1>
 
-    <form class="headForm" action="HotelMainServlet">
-        <div class="dateInput">
-
-            <span class="input-group-text" id="inputGroup-sizing-default">Check_in</span>
-            <input id="datepicker1" id="date1" name="check-in_date" width="276"/>
-            <span class="input-group-text" id="inputGroup-sizing-default">Check_Out</span>
-            <input id="datepicker2" name="check-out_date" width="276"/>
-
-            <script>
-                $('#datepicker1').datepicker({
-                    uiLibrary: 'bootstrap4'
-                });
-            </script>
-            <script>
-                $('#datepicker2').datepicker({
-                    uiLibrary: 'bootstrap4'
-                });
-            </script>
-
-            <script>
-                current_date = new Date();
-                month = current_date.getMonth() + 1;
-                day = current_date.getDate();
-                year = current_date.getFullYear();
-
-                if (day < 10) {
-                    day = "0" + day;
-                }
-
-                if (month < 10) {
-                    month = "0" + month;
-                }
-                datepicker1.value = month + "/" + day + "/" + year;
-                datepicker2.value = month + "/" + day + "/" + year;
-            </script>
-
-        </div>
-
-        <div class="addData">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Guests</span>
-                </div>
-
-                <input type="number" min="1" value="1" max="6" name="guests_amount" class="form-control"
-                       aria-label="Default" aria-describedby="inputGroup-sizing-default">
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Price</span>
-                </div>
-                <input type="number" min="30" value="30" name="price" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <span class="input-group-text" id="inputGroup-sizing-default">$</span>
-            </div>
-        </div>
-    </form>
 </div>
 
 </div>
@@ -98,14 +40,19 @@
         <th scope="col"></th>
         </thead>
 
-        <tr class="tr-content" th:each="room: ${rooms}">
+        <tr style="background-color: darkgrey" class="tr-content" th:each="room: ${rooms}">
             <td th:text="${room.getId()}"></td>
             <td th:text="${room.getSeatsAmount()}"></td>
             <td th:text="${room.getDayCost()}"></td>
-            <td th:text="${room.getTypeRoom().getTypeRoom()}"></td>
+            <td><form th:action="@{/facility}">
+                <button type="submit" th:text="${room.getTypeRoom().getTypeRoom()}"></button>
+                <input hidden th:value="${room.getTypeRoom().getId()}" name="typeRoom">
+            </form>
             <td>
                 <form th:action="@{/bookRoom}" method="post">
                     <input hidden="hidden" name="roomId" th:value="${room.getId()}">
+                    <input hidden="hidden" name="checkIn" type="text" th:value="${checkIn}">
+                    <input hidden="hidden" name="checkOut" type="text" th:value="${checkOut}">
                     <button class="btn btn-danger" type="submit">Booking</button>
                 </form>
             </td>

@@ -3,6 +3,8 @@ package com.netcracker.denisik.controllers;
 import com.netcracker.denisik.dto.ServiceAndCarRequestDto;
 import com.netcracker.denisik.entity.CarRent;
 import com.netcracker.denisik.entity.CarStatus;
+import com.netcracker.denisik.entity.Residence;
+import com.netcracker.denisik.entity.Status;
 import com.netcracker.denisik.repository.CarRentRepository;
 import com.netcracker.denisik.repository.CarRepository;
 import com.netcracker.denisik.services.CarService;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 @Controller
@@ -55,7 +58,17 @@ public class ResidenceController {
                 carService.addCarRent(residenceService.findActiveResidence(userDetails.getUser()),Long.valueOf(request.getValue()));
             }
         }
-        return "index";
+        return "redirect:/hello";
+    }
+
+    @PostMapping("/residence/checkOut")
+    public String checkOut(@AuthenticationPrincipal UserDetailsImpl userDetails){
+        try {
+            residenceService.checkOut(userDetails);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/personalArea";
     }
 
 //    @PostMapping(value = "/addCarsAndServices")
