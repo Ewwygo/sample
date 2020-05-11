@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:c="http://www.w3.org/1999/XSL/Transform" xmlns:height="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hotel</title>
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/animate.css}">
     <script th:src="@{/css/js/wow.min.js}"></script>
     <script>
-      new WOW().init();
+        new WOW().init();
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -16,14 +17,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/lightpick.css}">
     <link rel="stylesheet" th:href="@{/css/fontawesome.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" th:href="@{/css/mainBooking.css}">
+    <link rel="stylesheet" th:href="@{/css/mainResultSearch.css}">
 
 </head>
 <body>
 
 <div class="backLayer">
 
-    <h3 class="title">Please, choose the date and rooms number <p align="middle">where you prefer spend holiday</p></h3>
+    <h1 class="title">St. Ermin's Hotel</h1>
 
     <form class="headForm" action="HotelMainServlet">
         <div class="dateInput">
@@ -66,44 +67,50 @@
         <div class="addData">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Room number</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Guests</span>
                 </div>
-                <input type="number" min="1" value="211" max="320" name="room_number" class="form-control"
+
+                <input type="number" min="1" value="1" max="6" name="guests_amount" class="form-control"
                        aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
-        </div>
 
-        <div class="formBtn">
-            <button type="submit" class="btn btn-secondary" name="action" value="booking">Booking</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Price</span>
+                </div>
+                <input type="number" min="30" value="30" name="price" class="form-control" aria-label="Default"
+                       aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text" id="inputGroup-sizing-default">$</span>
+            </div>
         </div>
     </form>
 </div>
-<form method="post" th:action="@{/addService}">
-    <div class="tr-content" th:each="service: ${services}">
-        <span style="color: red" th:text="${service.getServiceName()}"></span>
-        <span style="color: red" th:text="${service.getPrice()}"></span>
-        <input type="checkbox" th:name="serviceId+${service.getId()}" th:value="${service.getId()}">
-    </div>
-    <div th:each="car: ${cars}">
-        <span style="color: red" th:text="${car.getMark()}"></span>
-        <span style="color: red" th:text="${car.getPrice()}"></span>
-        <input type="checkbox" th:name="carId+${car.getId()}" th:value="${car.getId()}">
-    </div>
-    <button type="submit">SUBMIT</button>
-</form>
-<!--<form method="post" th:object="${serviceAndCarRequestDto}" th:action="@{/addCarsAndServices}">-->
-<!--    <div class="tr-content" th:each="service: ${services}">-->
-<!--        <span style="color: red" th:text="${service.getServiceName()}"></span>-->
-<!--        <span style="color: red" th:text="${service.getPrice()}"></span>-->
-<!--        <input hidden="hidden" th:field="${cars.add()}" th:value="${service.getId()}">-->
-<!--    </div>-->
-<!--    <div th:each="car: ${cars}">-->
-<!--        <span style="color: red" th:text="${car.getMark()}"></span>-->
-<!--        <span style="color: red" th:text="${car.getPrice()}"></span>-->
-<!--        <input hidden="hidden" th:name="carId+${car.getId()}" th:value="${car.getId()}">-->
-<!--    </div>-->
-<!--    <button type="submit">SUBMIT</button>-->
-<!--</form>-->
 
+</div>
+<div class="mainContent">
+
+    <table class="table">
+        <thead class="thead-purple">
+        <th scope="col">Number</th>
+        <th scope="col">Guests</th>
+        <th scope="col">Price per day</th>
+        <th scope="col">Type room</th>
+        <th scope="col"></th>
+        </thead>
+
+        <tr class="tr-content" th:each="room: ${rooms}">
+            <td th:text="${room.getId()}"></td>
+            <td th:text="${room.getSeatsAmount()}"></td>
+            <td th:text="${room.getDayCost()}"></td>
+            <td th:text="${room.getTypeRoom().getTypeRoom()}"></td>
+            <td>
+                <form th:action="@{/bookRoom}" method="post">
+                    <input hidden="hidden" name="roomId" th:value="${room.getId()}">
+                    <button class="btn btn-danger" type="submit">Booking</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

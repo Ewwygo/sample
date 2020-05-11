@@ -4,7 +4,7 @@
     <title>Hotel</title>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet"th: href="css/animate.css">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
     <script th:src="@{/css/js/wow.min.js}"></script>
     <script>
       new WOW().init();
@@ -24,11 +24,11 @@
 <div class="backLayer">
 
     <h1 class="title wow slideInDown">Welcome to St. Ermin's Hotel</h1>
-    <form class="headForm" action="HotelMainServlet">
+    <form class="headForm" th:action="@{/getFilteredRooms}" method="get">
 
         <div class="dateInput">
             <span class="input-group-text" id="inputGroup-sizing-default">Check_in</span>
-            <input id="datepicker1" id="date1" name="check-in_date" width="276"/>
+            <input id="datepicker1" name="check-in_date" width="276"/>
 
             <span class="input-group-text" id="inputGroup-sizing-default">Check_Out</span>
             <input id="datepicker2" name="check-out_date" width="276"/>
@@ -72,7 +72,7 @@
                     <span class="input-group-text" id="inputGroup-sizing-default">Guests</span>
                 </div>
 
-                <input type="number" min="1" value="1" max="6" name="guests_amount" class="form-control"
+                <input type="number" name="seatsAmount" min="1" value="1" max="6" class="form-control"
                        aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
 
@@ -80,7 +80,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Price</span>
                 </div>
-                <input type="number" min="30" value="30" name="price" class="form-control" aria-label="Default"
+                <input type="number" name="dayCost" min="30" value="30" class="form-control" aria-label="Default"
                        aria-describedby="inputGroup-sizing-default">
                 <span class="input-group-text" id="inputGroup-sizing-default">$</span>
             </div>
@@ -101,12 +101,12 @@
               <li>Balcony</li>
               <li>Kitchen</li>
               <li>Smart Furniture</li>
-              <li>Persanal Library</li>
+              <li>Personal Library</li>
               <li>Mini garden</li>
             </ul>
           </p>
           <div class="wow jello">
-            <button class="btn btn-info more_info_btn" type="button" onclick='location.href = "hotelRoomsInfo.html"'>See more about rooms</button>
+            <a th:href="@{/rooms}"><button class="btn btn-info more_info_btn" type="button">See more about rooms</button></a>
           </div>
         </div>
 

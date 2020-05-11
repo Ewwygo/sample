@@ -10,4 +10,9 @@ public class MainController {
     public String hello(){
         return "index";
     }
+
+    @GetMapping("/addEntity")
+    public String addEntity(){
+        return "admin/addEntity";
+    }
 }

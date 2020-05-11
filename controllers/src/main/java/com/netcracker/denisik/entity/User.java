@@ -10,18 +10,31 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User extends BaseEntity {
+public class User{
 
-    @Column(name = "role")
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "login")
+    private String email;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "login", unique = true)
-    private String login;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

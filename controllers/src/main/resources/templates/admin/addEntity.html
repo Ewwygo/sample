@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/addRoom}" method="post">
+    <div><label> cost day (numbers): <input type="number" name="costDay"/> </label></div>
+    <div><label> num seats (numbers): <input type="number" name="numSeats"/> </label></div>
+    <div><label> type (number): <input type="number" name="typeId"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+<form th:action="@{/services/addService}" method="post">
+    <div><label> name: <input type="text" name="name"/> </label></div>
+    <div><label> price: <input type="number" name="price"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+<form th:action="@{/car/addCar}" method="post">
+    <div><label> mark: <input type="text" name="mark"/> </label></div>
+    <div><label> price: <input type="number" name="price"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>

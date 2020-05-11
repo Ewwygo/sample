@@ -29,10 +29,10 @@ public class SignUpController {
     }
 
     @PostMapping("/signUp")
-    public String signUp(@RequestParam String login, @RequestParam String password, @RequestParam Role role) {
-        String hashPassword = passwordEncoder.encode(password);
+    public String signUp(@RequestParam String email, @RequestParam String password,@RequestParam String country,
+                         @RequestParam String name, @RequestParam String phone, @RequestParam String surname) {
         try {
-            userService.saveUser(login,password,role);
+            userService.saveUser(email, password, country, name, phone, surname);
         } catch (Exception e) {
             e.printStackTrace();
         }

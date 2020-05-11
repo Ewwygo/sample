@@ -1,6 +1,5 @@
 package com.netcracker.denisik.userDetails;
 
-import com.netcracker.denisik.entity.Role;
 import com.netcracker.denisik.entity.User;
 import com.netcracker.denisik.repository.UserRepository;
 import lombok.Setter;
@@ -23,12 +22,15 @@ public class UserServiceImpl{
 
 
     @Transactional
-    public void saveUser(String login, String password, Role role) throws Exception {
-        if (!userRepository.existsByLogin(login)){
+    public void saveUser(String email, String password, String country, String name, String phone, String surname) throws Exception {
+        if (!userRepository.existsByEmail(email)){
             User user = new User();
-            user.setLogin(login);
+            user.setCountry(country);
+            user.setName(name);
+            user.setPhone(phone);
+            user.setSurname(surname);
+            user.setEmail(email);
             user.setPassword(passwordEncoder.encode(password));
-            user.setRole(role);
             userRepository.save(user);
         } else {
             throw new Exception("user exists");
