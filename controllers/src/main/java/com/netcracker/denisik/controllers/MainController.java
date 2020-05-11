@@ -20,7 +20,12 @@ public class MainController {
 
     @GetMapping("/hello")
     public String hello(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model){
-        model.addAttribute("user",userDetails.getUser());
+        if (userDetails != null){
+            model.addAttribute("user",userDetails.getUser());
+        } else {
+            model.addAttribute("user",null);
+
+        }
         return "index";
     }
 
