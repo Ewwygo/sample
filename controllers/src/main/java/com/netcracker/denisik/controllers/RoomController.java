@@ -1,9 +1,6 @@
 package com.netcracker.denisik.controllers;
 
-import com.netcracker.denisik.entity.Facilities;
-import com.netcracker.denisik.entity.Status;
-import com.netcracker.denisik.entity.TypeRoom;
-import com.netcracker.denisik.entity.User;
+import com.netcracker.denisik.entity.*;
 import com.netcracker.denisik.repository.FacilitiesRepository;
 import com.netcracker.denisik.repository.ResidenceRepository;
 import com.netcracker.denisik.repository.RoomRepository;
@@ -20,8 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -30,19 +30,8 @@ public class RoomController {
 
     private RoomService roomService;
     private TypeRoomRepository typeRoomRepository;
-    private RoomRepository roomRepository;
     private ResidenceRepository residenceRepository;
     private FacilitiesRepository facilitiesRepository;
-
-
-
-
-    @PostMapping("/addRoom")
-    public String addRoom(@RequestParam Integer costDay,@RequestParam Integer numSeats, @RequestParam Long typeId){
-        TypeRoom typeRoom = typeRoomRepository.findOne(typeId);
-        roomService.addRoom(costDay, numSeats, typeRoom);
-        return "redirect:/hello";
-    }
 
     @GetMapping(value = "/getFilteredRooms")
     public String getFilteredRooms(@RequestParam Integer dayCost, @RequestParam Integer seatsAmount,
@@ -71,9 +60,19 @@ public class RoomController {
     }
 
     @GetMapping("/facility")
-    public String getFacility(@RequestParam Long typeRoom,Model model){
+    public String getFacility(@RequestParam Long typeRoom,Model model) throws UnsupportedEncodingException {
         TypeRoom typeRoom1 = typeRoomRepository.findOne(typeRoom);
         model.addAttribute("facility", typeRoom1.getFacilitiesSet());
-        return "Facility";
+        model.addAttribute("typeRoom", typeRoom1);
+        List<String> list = new ArrayList<>();
+        for (DBFile pic: typeRoom1.getPictures()
+             ) {
+            byte[] encode = Base64.getEncoder().encode(pic.getData());
+            String str = new String(encode,"UTF-8");
+            list.add(str);
+        }
+        model.addAttribute("pics", list);
+//        model.addAttribute("image", new String(encode, "UTF-8"));
+        return "BusinessTypeInfo";
     }
 }

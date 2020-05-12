@@ -41,11 +41,4 @@ public class MainController {
     @GetMapping(value = "/facilities")
     public String getFacilities(){return "facilitiesInfo";}
 
-    @GetMapping("/admin/addEntity")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String addEntity(){
-        return "admin/addEntity";
-    }
-
-
 }

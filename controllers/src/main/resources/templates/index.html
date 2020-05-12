@@ -24,9 +24,13 @@
 <div class="backLayer">
 
     <div>
-        <h1 class="title wow slideInDown">Welcome to St. Ermin's Hotel
-            <a th:if="${user} == null" th:href="@{/login}"><img style="margin: 20px" th:src="@{/css/img/menu.png}"></a>
-            <a th:if="${user} != null" th:href="@{/personalArea}"><img style="margin: 20px" th:src="@{/css/img/menu.png}"></a>
+        <h1 class="title wow slideInDown">
+            <form th:if="${user != null}" th:action="@{/logout}" method="post">
+                <button type="submit">LogOut</button>
+            </form>
+            Welcome to St. Ermin's Hotel
+            <a th:if="${user} == null" th:href="@{/login}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/login.png}"></a>
+            <a th:if="${user} != null" th:href="@{/personalArea}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/user.png}"></a>
         </h1>
 
     </div>

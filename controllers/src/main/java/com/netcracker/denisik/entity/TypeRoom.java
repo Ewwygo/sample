@@ -20,4 +20,7 @@ public class TypeRoom {
 
     @ManyToMany
     private Set<Facilities> facilitiesSet;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<DBFile> pictures;
 }

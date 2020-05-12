@@ -5,20 +5,41 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/addRoom}" method="post">
+<div>
+    room
+</div>
+<form th:action="@{/admin/addRoom}" method="post">
     <div><label> cost day (numbers): <input type="number" name="costDay"/> </label></div>
     <div><label> num seats (numbers): <input type="number" name="numSeats"/> </label></div>
     <div><label> type (number): <input type="number" name="typeId"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
-<form th:action="@{/services/addService}" method="post">
+<div>
+    service
+</div>
+<form th:action="@{/admin/addService}" method="post">
     <div><label> name: <input type="text" name="name"/> </label></div>
     <div><label> price: <input type="number" name="price"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
-<form th:action="@{/car/addCar}" method="post">
+<div>
+    car
+</div>
+<form th:action="@{/admin/addCar}" method="post">
     <div><label> mark: <input type="text" name="mark"/> </label></div>
     <div><label> price: <input type="number" name="price"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+<div>
+    typeRoom
+</div>
+<form th:action="@{/admin/addTypeRoom}" method="post" enctype="multipart/form-data">
+    <div><label> typeroomname: <input type="text" name="name"/> </label></div>
+    <div><label> pic: <input type="file" name="picture"/> </label></div>
+    <div><label> pic: <input type="file" name="picture"/> </label></div>
+    <div><label> pic: <input type="file" name="picture"/> </label></div>
+    <div><label> pic: <input type="file" name="picture"/> </label></div>
+    <div><label> pic: <input type="file" name="picture"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
 </body>

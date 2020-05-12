@@ -16,13 +16,5 @@ public class CarController {
 
     private CarRepository carRepository;
 
-    @RequestMapping("/addCar")
-    public String addCar(@RequestParam String mark, @RequestParam Integer price){
-        Car car = new Car();
-        car.setMark(mark);
-        car.setPrice(price);
-        car.setCarStatus(CarStatus.FREE);
-        carRepository.save(car);
-        return "redirect:/addEntity";
-    }
+
 }

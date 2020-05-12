@@ -13,11 +13,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Setter(onMethod_ = @Autowired)
 public class ServicesController {
 
-    private ServicesService servicesService;
 
-    @PostMapping(value = "/addService")
-    public String addService(@RequestParam String name, @RequestParam Integer price){
-        servicesService.addService(name,price);
-        return "redirect:/addEntity";
-    }
 }
