@@ -31,8 +31,17 @@ h3{
 
 h5{
   color: maroon;
-  font-size: 25px;
+  font-size: 40px;
   font-family: "ArimaKoshi-Light";
+  text-align: center;
+}
+
+h6{
+  padding: 60px 0px 0px 10px;
+  color: maroon;
+  font-size: 40px;
+  font-family: "ArimaKoshi-Light";
+  text-align: center;
 }
 
 a{
@@ -51,6 +60,21 @@ a:hover{
   margin: 0;
   height: 270px;
   background-color: #CCCC;
+}
+
+.container{
+  width: 350px;
+  height: 350px;
+  background-color: #CCCC;
+  margin: 90px 290px 70px 120px;
+  /*vertical-align: middle;*/
+  /*text-align: center;*/
+}
+
+
+.contact{
+  font-size: 24px;
+  text-align: left;
 }
 
 .info > ul{
@@ -170,6 +194,11 @@ a:hover{
   margin-top: 40px;
   justify-content: space-around;
   align-items: center;
+}
+
+.location{
+  display: flex;
+  justify-content: space-around;
 }
 
 .infoConteiner > div{

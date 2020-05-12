@@ -35,10 +35,7 @@ public class RoomController {
     private FacilitiesRepository facilitiesRepository;
 
 
-    @GetMapping(value = "/rooms")
-    public String getRooms(){
-        return "hotelRoomsInfo";
-    }
+
 
     @PostMapping("/addRoom")
     public String addRoom(@RequestParam Integer costDay,@RequestParam Integer numSeats, @RequestParam Long typeId){

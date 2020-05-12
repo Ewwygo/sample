@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/animate.css}">
     <script th:src="@{/css/js/wow.min.js}"></script>
     <script>
-      new WOW().init();
+        new WOW().init();
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -98,60 +98,83 @@
     </form>
 
     <form action="HotelMainServlet">
-      <div class="infoConteiner">
-        <div class="all_rooms_info">
-          <h5>Hotel Rooms</h5>
-          <p>Spend your time with comfort</p>
-          <p>
-            <ul>
-              <li>Balcony</li>
-              <li>Kitchen</li>
-              <li>Smart Furniture</li>
-              <li>Personal Library</li>
-              <li>Mini garden</li>
-            </ul>
-          </p>
-          <div class="wow jello">
-            <a th:href="@{/rooms}"><button class="btn btn-info more_info_btn" type="button">See more about rooms</button></a>
-          </div>
-        </div>
+        <div class="infoConteiner">
+            <div class="all_rooms_info">
+                <h5>Hotel Rooms</h5>
+                <p>Spend your time with comfort</p>
+                <p>
+                <ul>
+                    <li>Balcony</li>
+                    <li>Kitchen</li>
+                    <li>Smart Furniture</li>
+                    <li>Personal Library</li>
+                    <li>Mini garden</li>
+                </ul>
+                </p>
+                <div class="wow jello">
+                    <a th:href="@{/rooms}"><button class="btn btn-info more_info_btn" type="button">See more about rooms</button></a>
+                </div>
+            </div>
 
-        <div class="relax_info">
-          <h5>Leisure and Entertainment</h5>
-          <p>Unlimited relaxation</p>
-          <p>
-            <ul>
-              <li>Swimming pools</li>
-              <li>Tennis court</li>
-              <li>Volleyball court</li>
-              <li>Spa and Massage</li>
-              <li>Billiard room</li>
-            </ul>
-          </p>
-          <div>
-            <button class="btn btn-info more_info_btn" type="button" onclick='location.href = "leisureInfo.html"' >See more leisure</button>
-          </div>
-        </div>
+            <div class="relax_info">
+                <h5>Leisure and Entertainment</h5>
+                <p>Unlimited relaxation</p>
+                <p>
+                <ul>
+                    <li>Swimming pools</li>
+                    <li>Tennis court</li>
+                    <li>Volleyball court</li>
+                    <li>Spa and Massage</li>
+                    <li>Billiard room</li>
+                </ul>
+                </p>
+                <div>
+                    <a th:href="@{/leisure}"><button class="btn btn-info more_info_btn" type="button" >See more leisure</button></a>
+                </div>
+            </div>
 
-        <div class="facilities">
-          <h5 class="wow rubberBand">Facilities</h5>
-          <p>Highest amenities</p>
-          <p>
-            <ul>
-              <li>Parking</li>
-              <li>Free wi-fi</li>
-              <li>Airport transfer</li>
-              <li>Round-the-clock bar</li>
-              <li>Breakfast in room</li>
-            </ul>
-          </p>
-          <div>
-            <button class="btn btn-info more_info_btn" type="button" onclick='location.href = "facilitiesInfo.html"' >See more facilities</button>
-          </div>
+            <div class="facilities">
+                <h5 class="wow rubberBand">Facilities</h5>
+                <p>Highest amenities</p>
+                <p>
+                <ul>
+                    <li>Parking</li>
+                    <li>Free wi-fi</li>
+                    <li>Airport transfer</li>
+                    <li>Round-the-clock bar</li>
+                    <li>Breakfast in room</li>
+                </ul>
+                </p>
+                <div>
+                    <a th:href="@{/facilities}"><button class="btn btn-info more_info_btn" type="button" >See more facilities</button></a>
+                </div>
+            </div>
         </div>
-      </div>
     </form>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9415.977919371737!2d27.56875814880013!3d53.84296208137662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbd1bd7cd8c605%3A0x3ffa17d3c4aa3935!2z0JvQvtGI0LjRhtCwLCBNaW5zaw!5e0!3m2!1sen!2sby!4v1589235898510!5m2!1sen!2sby" width="600" height="450" frameborder="0" style="border:0; margin-left: 30%; margin-top: 50px" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <!--    <table width="100%" cellspacing="0" style="background-color: #8E064B; opacity: 0.8; color: white">-->
+    <table>
+        <tr>
+            <td>
+                <div class="container">
+                    <h6 class="wow rubberBand">Contacts</h6>
+                    <p class="contact"><b>phone:</b> +44 20 7222 7888<br/>
+                        <b>email:</b> hotel@gmail.com<br/>
+                        <b>address:</b> Miami, FL 33132, USA
+                    </p>
+                </div>
+            </td>
+            <td>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1864.670151430143!2d-80.18643721726593!3d25.77778855937533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b4206607af1b%3A0x4154ff5e01705f30!2z0JTQsNGD0L3RgtCw0YPQvSDQnNCw0LnQsNC80LgsINCc0LDQudCw0LzQuCwg0KTQu9C-0YDQuNC00LAgMzMxMzIsINCh0KjQkA!5e0!3m2!1sru!2sby!4v1589297826990!5m2!1sru!2sby"
+                        width="480" height="400" frameborder="0" style="border:0; margin-top: 50px"
+                        allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
+

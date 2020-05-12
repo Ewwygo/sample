@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>My account</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/lightpick.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/personalArea.css}">
 </head>
-<body>
-<div>
-    <h1 th:text="${user.getSurname()}"></h1>
-    <h1 th:text="${user.getName()}"></h1>
-    <h1 th:text="${user.getCountry()}"></h1>
-    <h1 th:text="${user.getEmail()}"></h1>
-    <h1 th:text="${user.getPhone()}"></h1>
-</div>
-<table class="table">
-    <thead class="thead-purple">
-    <th scope="col">status</th>
-    <th scope="col">services total</th>
-    <th scope="col">date</th>
-    </thead>
 
-    <tr class="tr-content" th:each="residence: ${residences}">
-        <td th:text="${residence.getStatus()}"></td>
-        <td th:text="${residence.getAmount()}"></td>
-        <td th:text="${residence.getArrival()} + ' ' + ${residence.getDeparture()}"></td>
-    </tr>
-</table>
-<div th:if="${activeResidence} != null">
-    <form th:action="@{/residence/checkOut}" method="post">
-        <button type="submit">check out</button>
-    </form>
+<body>
+<div class="backLayer">
+    <h1 class="title">My account</h1>
+    <div align="center">
+        <form th:action="@{/personalArea/update}" method="post">
+            <div><label>Email</label><input disabled="true" class="inp" type="text" name="email" th:value="${user.getEmail()}"/></div>
+            <div><label>Surname</label><input class="inp" name="surname" th:value="${user.getSurname()}"/> </div>
+            <div><label>Name</label><input class="inp" type="text" name="name" th:value="${user.getName()}"/> </div>
+            <div><label>Country</label><input class="inp" type="text" name="country" th:value="${user.getCountry()}"/> </div>
+            <div><label>Phone</label><input class="inp" type="text" name="phone" th:value="${user.getPhone()}"/></div>
+            <div><input class="button" type="submit" value="Save"/></div>
+        </form>
+    </div>
+
+    <table class="table">
+        <thead class="thead-purple">
+        <th scope="col">status</th>
+        <th scope="col">services total</th>
+        <th scope="col">date</th>
+        </thead>
+
+        <tr class="tr-content" style="background-color: #CCCC; color: #8E064B" th:each="residence: ${residences}">
+            <td th:text="${residence.getStatus()}"></td>
+            <td th:text="${residence.getAmount()}"></td>
+            <td th:text="${residence.getArrival()} + ' ' + ${residence.getDeparture()}"></td>
+        </tr>
+    </table>
+    <div th:if="${activeResidence} != null">
+        <form th:action="@{/residence/checkOut}" method="post">
+            <button class="buttonCheckOut" type="submit">check out</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

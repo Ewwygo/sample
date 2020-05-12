@@ -35,8 +35,7 @@ public class ResidenceController {
     private CarService carService;
 
     @RequestMapping(value = "/getActiveResidence")
-    public String getActiveResidence(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model,
-                                     @ModelAttribute(name = "serviceAndCarRequestDto") ServiceAndCarRequestDto data){
+    public String getActiveResidence(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model){
         try {
             model.addAttribute("residence",residenceService.findActiveResidence(userDetails.getUser()));
             model.addAttribute("services",servicesService.findServices());
@@ -44,7 +43,7 @@ public class ResidenceController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "Booking";
+        return "resultOfBooking";
     }
 
     @PostMapping(value = "/addService")
@@ -58,7 +57,7 @@ public class ResidenceController {
                 carService.addCarRent(residenceService.findActiveResidence(userDetails.getUser()),Long.valueOf(request.getValue()));
             }
         }
-        return "redirect:/hello";
+        return "redirect:/hotel";
     }
 
     @PostMapping("/residence/checkOut")
