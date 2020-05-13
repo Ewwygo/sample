@@ -36,18 +36,22 @@
         <th scope="col">Number</th>
         <th scope="col">Guests</th>
         <th scope="col">Price per day</th>
+        <th scope="col">Total price</th>
         <th scope="col">Type room</th>
         <th scope="col"></th>
         </thead>
 
-        <tr style="background-color: darkgrey" class="tr-content" th:each="room: ${rooms}">
+        <tr style="background-color: #CCCC; color: #8E064B" class="tr-content" th:each="room: ${rooms}">
             <td th:text="${room.getId()}"></td>
             <td th:text="${room.getSeatsAmount()}"></td>
             <td th:text="${room.getDayCost()}"></td>
-            <td><form th:action="@{/facility}">
-                <button type="submit" th:text="${room.getTypeRoom().getTypeRoom()}"></button>
-                <input hidden th:value="${room.getTypeRoom().getId()}" name="typeRoom">
-            </form>
+            <td th:text="${room.getDayCost()} * ${days}"></td>
+            <td>
+                <form th:action="@{/facility}">
+                    <button type="submit" th:text="${room.getTypeRoom().getTypeRoom()}"></button>
+                    <input hidden th:value="${room.getTypeRoom().getId()}" name="typeRoom">
+                </form>
+            </td>
             <td>
                 <form th:action="@{/bookRoom}" method="post">
                     <input hidden="hidden" name="roomId" th:value="${room.getId()}">

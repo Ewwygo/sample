@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collection;
@@ -48,6 +49,7 @@ public class RoomController {
         Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
         boolean admin = authorities.contains(new SimpleGrantedAuthority("ADMIN"));
         model.addAttribute("userAuthorities", admin);
+        model.addAttribute("days", ChronoUnit.DAYS.between(checkIn,checkOut));
         return "ResultSearch";
     }
 
