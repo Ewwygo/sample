@@ -60,6 +60,7 @@
                     <button class="btn btn-danger" type="submit">Booking</button>
                 </form>
                 <div th:if="${userAuthorities}">
+                    <br>
                     <form  th:action="@{/admin/deleteRoom}" method="post">
                         <input hidden="hidden" name="roomId" th:value="${room.getId()}">
                         <button class="btn btn-danger" type="submit">Delete</button>
