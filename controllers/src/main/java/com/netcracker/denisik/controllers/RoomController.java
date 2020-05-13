@@ -9,7 +9,9 @@ import com.netcracker.denisik.services.RoomService;
 import com.netcracker.denisik.userDetails.UserDetailsImpl;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -34,7 +37,7 @@ public class RoomController {
     private FacilitiesRepository facilitiesRepository;
 
     @GetMapping(value = "/getFilteredRooms")
-    public String getFilteredRooms(@RequestParam Integer dayCost, @RequestParam Integer seatsAmount,
+    public String getFilteredRooms(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestParam Integer dayCost, @RequestParam Integer seatsAmount,
                                    @RequestParam String checkInDate, @RequestParam String checkOutDate, Model model){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate checkIn = LocalDate.parse(checkInDate,formatter);
@@ -42,6 +45,9 @@ public class RoomController {
         model.addAttribute("rooms",roomService.findFilteredRoom(dayCost, seatsAmount,checkIn,checkOut));
         model.addAttribute("checkIn",checkIn);
         model.addAttribute("checkOut",checkOut);
+        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+        boolean admin = authorities.contains(new SimpleGrantedAuthority("ADMIN"));
+        model.addAttribute("userAuthorities", admin);
         return "ResultSearch";
     }
 

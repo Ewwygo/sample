@@ -55,6 +55,13 @@
                     <input hidden="hidden" name="checkOut" type="text" th:value="${checkOut}">
                     <button class="btn btn-danger" type="submit">Booking</button>
                 </form>
+                <div th:if="${userAuthorities}">
+                    <form  th:action="@{/admin/deleteRoom}" method="post">
+                        <input hidden="hidden" name="roomId" th:value="${room.getId()}">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </div>
+
             </td>
         </tr>
     </table>

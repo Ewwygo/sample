@@ -24,6 +24,7 @@ public class RoomService {
         room.setDayCost(cost);
         room.setSeatsAmount(numSeats);
         room.setTypeRoom(type);
+        room.setIsActive(true);
         roomRepository.save(room);
     }
 

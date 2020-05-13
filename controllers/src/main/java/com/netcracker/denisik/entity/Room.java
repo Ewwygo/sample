@@ -25,4 +25,7 @@ public class Room {
     @ManyToOne(cascade = ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "type")
     private TypeRoom typeRoom;
+
+    @Column(name = "status")
+    private Boolean isActive;
 }

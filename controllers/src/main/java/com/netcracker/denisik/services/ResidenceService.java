@@ -1,5 +1,6 @@
 package com.netcracker.denisik.services;
 
+import com.netcracker.denisik.entity.CarStatus;
 import com.netcracker.denisik.entity.Residence;
 import com.netcracker.denisik.entity.Status;
 import com.netcracker.denisik.entity.User;
@@ -42,6 +43,7 @@ public class ResidenceService {
     public void checkOut(UserDetailsImpl userDetails){
         Optional<Residence> residence = residenceRepository.findActiveByUser(userDetails.getUser());
         if (residence.isPresent()){
+            residence.get().getCarRentSet().forEach(carRent -> carRent.getCar().setCarStatus(CarStatus.FREE));
             residence.get().setStatus(Status.EXPIRED);
             residence.get().setActualCheckOut(LocalDate.now());
             residenceRepository.save(residence.get());

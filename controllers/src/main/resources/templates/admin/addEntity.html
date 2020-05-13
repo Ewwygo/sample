@@ -42,5 +42,20 @@
     <div><label> pic: <input type="file" name="picture"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
+<div>
+    facility
+</div>
+<form th:action="@{/admin/addFacility}" method="post">
+    <div><label> facility: <input type="text" name="name"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+<div>
+    facility
+</div>
+<form th:action="@{/admin/bindFacilityAndType}" method="post">
+    <div><label> facility: <input type="number" name="fId"/> </label></div>
+    <div><label> type: <input type="number" name="tId"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
 </body>
 </html>

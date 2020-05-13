@@ -1,12 +1,7 @@
 package com.netcracker.denisik.controllers;
 
-import com.netcracker.denisik.entity.Car;
-import com.netcracker.denisik.entity.CarStatus;
-import com.netcracker.denisik.entity.DBFile;
-import com.netcracker.denisik.entity.TypeRoom;
-import com.netcracker.denisik.repository.CarRepository;
-import com.netcracker.denisik.repository.DBFileRepository;
-import com.netcracker.denisik.repository.TypeRoomRepository;
+import com.netcracker.denisik.entity.*;
+import com.netcracker.denisik.repository.*;
 import com.netcracker.denisik.services.DBFileService;
 import com.netcracker.denisik.services.RoomService;
 import com.netcracker.denisik.services.ServicesService;
@@ -31,6 +26,8 @@ public class AdminController {
     private TypeRoomRepository typeRoomRepository;
     private DBFileRepository fileRepository;
     private DBFileService dbFileService;
+    private FacilitiesRepository facilitiesRepository;
+    private RoomRepository roomRepository;
 
     @GetMapping("/addEntity")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -89,14 +86,38 @@ public class AdminController {
         return "admin/addEntity";
     }
 
-//    @GetMapping("/product/image/{id}")
-//    public void showProductImage(@PathVariable Long id,
-//                               HttpServletResponse response) throws IOException {
-//        response.setContentType("image/jpeg"); // Or whatever format you wanna use
-//
-//        TypeRoom product = typeRoomRepository.findOne(id);
-//
-//        InputStream is = new ByteArrayInputStream(product.getPicture().getData());
-//        IOUtils(is, response.getOutputStream());
-//    }
+    @PostMapping("/addFacility")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String addFacility(@RequestParam String name){
+        Facilities facilities = new Facilities();
+        facilities.setFacility(name);
+        facilitiesRepository.save(facilities);
+        return "admin/addEntity";
+    }
+
+    @PostMapping("/bindFacilityAndType")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String bindFacilities(@RequestParam Long fId,@RequestParam Long tId) throws Exception {
+        Facilities facilities = facilitiesRepository.findOne(fId);
+        TypeRoom typeRoom = typeRoomRepository.findOne(tId);
+        if(facilities != null && typeRoom != null){
+            facilities.getTypeRoomSet().add(typeRoom);
+            typeRoom.getFacilitiesSet().add(facilities);
+            facilitiesRepository.save(facilities);
+            typeRoomRepository.save(typeRoom);
+        } else {
+            throw new Exception("not found");
+        }
+        return "admin/addEntity";
+    }
+
+    @PostMapping("/deleteRoom")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String deleteRoom(@RequestParam Long roomId) {
+        Room room = roomRepository.findOne(roomId);
+        room.setIsActive(false);
+        roomRepository.save(room);
+        return "redirect:/hotel";
+    }
 }
+

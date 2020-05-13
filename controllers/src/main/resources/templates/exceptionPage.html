@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hotel</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/animate.css">
-    <script src="js/wow.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <script th:src="@{/css/js/wow.min.js}"></script>
     <script>
         new WOW().init();
     </script>
-    <link rel="stylesheet" type="text/css" href="css/lightpick.css">
-    <link rel="stylesheet" href="css/fontawesome.css" type="text/css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/mainException.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/lightpick.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/mainException.css}">
 </head>
 <body>
     <div class="backLayer">
       <h1 class="title rubberBand">Oops! You did something wrong!</h1>
+        <h3 th:text="${e}"></h3>
       <h3>Press this button to open home page</h3>
-      <button class="btn btn-danger" type="button" onclick='location.href = "index.html"'>Home page</button>
+      <a th:href="@{/hotel}"><button class="btn btn-danger" type="button">Home page</button></a>
     </div>
 </body>
 </html>
