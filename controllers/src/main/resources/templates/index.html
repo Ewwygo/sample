@@ -25,12 +25,14 @@
 
     <div>
         <h1 class="title wow slideInDown">
-            <form th:if="${user != null}" th:action="@{/logout}" method="post">
-                <button type="submit">LogOut</button>
-            </form>
-            Welcome to St. Ermin's Hotel
-            <a th:if="${user} == null" th:href="@{/login}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/login.png}"></a>
-            <a th:if="${user} != null" th:href="@{/personalArea}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/user.png}"></a>
+            <div >
+                <form style="width: 10%" th:if="${user != null}" th:action="@{/logout}" method="post">
+                    <input style="width: 30px" type="image" name="submit" th:src="@{/css/img/exit.png}">
+                </form>
+                <span>Welcome to St. Ermin's Hotel</span>
+                <a th:if="${user} == null" th:href="@{/login}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/login.png}"></a>
+                <a th:if="${user} != null" th:href="@{/personalArea}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/user.png}"></a>
+            </div>
         </h1>
 
     </div>
