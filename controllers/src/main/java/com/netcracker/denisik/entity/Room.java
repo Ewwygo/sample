@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 @Getter
 @Setter
@@ -20,7 +22,7 @@ public class Room {
     @Column(name = "cost_day")
     private Integer dayCost;
 
-    @ManyToOne
+    @ManyToOne(cascade = ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "type")
     private TypeRoom typeRoom;
 }
