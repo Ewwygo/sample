@@ -36,6 +36,6 @@ public class SignUpController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/hello";
+        return "redirect:/hotel";
     }
 }

@@ -1,10 +1,6 @@
 package com.netcracker.denisik.controllers;
 
-import com.netcracker.denisik.entity.CarRent;
 import com.netcracker.denisik.entity.CarStatus;
-import com.netcracker.denisik.entity.Residence;
-import com.netcracker.denisik.entity.Status;
-import com.netcracker.denisik.repository.CarRentRepository;
 import com.netcracker.denisik.repository.CarRepository;
 import com.netcracker.denisik.services.CarService;
 import com.netcracker.denisik.services.ResidenceService;
@@ -15,13 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDate;
 import java.util.Map;
 
 @Controller
@@ -68,9 +61,4 @@ public class ResidenceController {
         }
         return "redirect:/personalArea";
     }
-
-//    @PostMapping(value = "/addCarsAndServices")
-//    public String addCarsAndServices(@ModelAttribute(name = "serviceAndCarRequestDto") ServiceAndCarRequestDto data){
-//
-//    }
 }

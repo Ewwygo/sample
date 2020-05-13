@@ -11,19 +11,12 @@ import com.netcracker.denisik.services.DBFileService;
 import com.netcracker.denisik.services.RoomService;
 import com.netcracker.denisik.services.ServicesService;
 import lombok.Setter;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
 
