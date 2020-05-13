@@ -1,6 +1,5 @@
 package com.netcracker.denisik.controllers;
 
-import com.netcracker.denisik.dto.ServiceAndCarRequestDto;
 import com.netcracker.denisik.entity.CarRent;
 import com.netcracker.denisik.entity.CarStatus;
 import com.netcracker.denisik.entity.Residence;
