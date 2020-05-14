@@ -4,10 +4,14 @@ import com.netcracker.denisik.repository.ResidenceRepository;
 import com.netcracker.denisik.userDetails.UserDetailsImpl;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Collection;
 
 
 @Controller
@@ -19,6 +23,9 @@ public class MainController {
     public String hello(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model){
         if (userDetails != null){
             model.addAttribute("user",userDetails.getUser());
+            Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+            boolean admin = authorities.contains(new SimpleGrantedAuthority("ADMIN"));
+            model.addAttribute("userAuthorities", admin);
         } else {
             model.addAttribute("user",null);
 

@@ -32,6 +32,7 @@
                 <span>Welcome to St. Ermin's Hotel</span>
                 <a th:if="${user} == null" th:href="@{/login}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/login.png}"></a>
                 <a th:if="${user} != null" th:href="@{/personalArea}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/user.png}"></a>
+                <a th:if="${user} != null and ${userAuthorities}" th:href="@{/admin/addEntity}"><img style="width: 40px;  margin-bottom: 22px" th:src="@{/css/img/admin.png}"></a>
             </div>
         </h1>
 
