@@ -1,61 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 </head>
+
 <body>
-<div>
-    room
+    <h2>Admin Panel</h2>
+    <div class="row mb-5">
+        <div class="formWrapper col-6" style=" background-color: #fff0fa;">
+            <span class="adminFormTitle"> Add new room
+            </span>
+           
+            <form th:action="@{/admin/addRoom}" method="post">
+                <div><label class="adminFormLabel"> cost day (numbers):  </label>
+                    <input type="number" name="costDay" /></div>
+                <div><label class="adminFormLabel"> num seats (numbers): </label>
+                    <input type="number" name="numSeats" /> </div>
+                <div><label class="adminFormLabel"> type (number): </label>
+                    <input type="number" name="typeId" /> </div>
+                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+            </form>
+        </div>
+        <div class="formWrapper col-6" style=" background-color: #fff0fa;">
+            <span class="adminFormTitle">Add new service</span>
+            
+
+            <form th:action="@{/admin/addService}" method="post">
+                <div><label class="adminFormLabel"> name:  </label>
+                    <input type="text" name="name" /></div>
+                <div><label class="adminFormLabel"> price:  </label>
+                    <input type="number" name="price" /></div>
+                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-5">
+        <div class="formWrapper col-6" >
+            <span class="adminFormTitle">Add new car</span>
+
+            <form th:action="@{/admin/addCar}" method="post">
+                <div><label class="adminFormLabel"> mark:  </label>
+                    <input type="text" name="mark" /></div>
+                <div><label class="adminFormLabel"> price: </label>
+                    <input type="number" name="price" /> </div>
+                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+            </form>
+        </div>
+        <div class="formWrapper col-6" >
+            <span class="adminFormTitle">Add new typeRoom</span>
+
+            <form th:action="@{/admin/addTypeRoom}" method="post" enctype="multipart/form-data">
+                <div><label class="adminFormLabel"> typeroomname:  </label>
+                    <input type="text" name="name" /></div>
+                <div><label class="adminFormLabel"> pic: </label>
+                    <input type="file" name="picture" /> </div>
+                <div><label class="adminFormLabel"> pic:  </label>
+                    <input type="file" name="picture" /></div>
+                <div><label class="adminFormLabel"> pic:  </label>
+                    <input type="file" name="picture" /></div>
+                <div><label class="adminFormLabel"> pic:  </label>
+                    <input type="file" name="picture" /></div>
+                <div><label class="adminFormLabel"> pic: </label>
+                    <input type="file" name="picture" /> </div>
+                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-5">
+    <div class="formWrapper col-6" style=" background-color: #fff0fa;">
+        <span class="adminFormTitle">Add new facility</span>
+
+        <form th:action="@{/admin/addFacility}" method="post">
+            <div><label class="adminFormLabel"> facility: </label>
+                <input type="text" name="name" /> </div>
+            <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+        </form>
+    </div>
+    <div class="formWrapper col-6" style=" background-color: #fff0fa;">
+        <span class="adminFormTitle">Add new facility</span>
+
+        <form th:action="@{/admin/bindFacilityAndType}" method="post">
+            <div><label class="adminFormLabel"> facility: </label>
+                <input type="number" name="fId" /> </div>
+            <div><label class="adminFormLabel"> type:  </label>
+                <input type="number" name="tId" /></div>
+            <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+        </form>
+    </div>
 </div>
-<form th:action="@{/admin/addRoom}" method="post">
-    <div><label> cost day (numbers): <input type="number" name="costDay"/> </label></div>
-    <div><label> num seats (numbers): <input type="number" name="numSeats"/> </label></div>
-    <div><label> type (number): <input type="number" name="typeId"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<div>
-    service
-</div>
-<form th:action="@{/admin/addService}" method="post">
-    <div><label> name: <input type="text" name="name"/> </label></div>
-    <div><label> price: <input type="number" name="price"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<div>
-    car
-</div>
-<form th:action="@{/admin/addCar}" method="post">
-    <div><label> mark: <input type="text" name="mark"/> </label></div>
-    <div><label> price: <input type="number" name="price"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<div>
-    typeRoom
-</div>
-<form th:action="@{/admin/addTypeRoom}" method="post" enctype="multipart/form-data">
-    <div><label> typeroomname: <input type="text" name="name"/> </label></div>
-    <div><label> pic: <input type="file" name="picture"/> </label></div>
-    <div><label> pic: <input type="file" name="picture"/> </label></div>
-    <div><label> pic: <input type="file" name="picture"/> </label></div>
-    <div><label> pic: <input type="file" name="picture"/> </label></div>
-    <div><label> pic: <input type="file" name="picture"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<div>
-    facility
-</div>
-<form th:action="@{/admin/addFacility}" method="post">
-    <div><label> facility: <input type="text" name="name"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<div>
-    facility
-</div>
-<form th:action="@{/admin/bindFacilityAndType}" method="post">
-    <div><label> facility: <input type="number" name="fId"/> </label></div>
-    <div><label> type: <input type="number" name="tId"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
 </body>
+
 </html>
