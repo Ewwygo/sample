@@ -107,13 +107,13 @@
             <td th:text="${residence.getStatus()}"></td>
             <td>
                 <div>
-                    <span th:text="'room number -' + ${residence.getRoom().getId()}"></span>
+                    <span th:text="'room number : ' + ${residence.getRoom().getId()}"></span>
                 </div>
                 <div th:each="service : ${residence.getServicesSet()}">
-                    <span th:text="${service.getServiceName()}"></span>
+                    <span th:text="'service name : ' + ${service.getServiceName()}"></span>
                 </div>
                 <div th:each="car : ${residence.getCarRentSet()}">
-                    <span th:text="${car.getCar().getMark()}"></span>
+                    <span th:text="'car : ' + ${car.getCar().getMark()}"></span>
                 </div>
             </td>
             <td th:text="${residence.getAmount()}"></td>

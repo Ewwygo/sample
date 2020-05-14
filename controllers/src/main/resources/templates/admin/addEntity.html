@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/lightpick.css}">
     <link rel="stylesheet" th:href="@{/css/fontawesome.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" th:href="@{/css/slider.css}">
     <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 
@@ -33,7 +32,7 @@
                     <input type="number" name="numSeats" /> </div>
                 <div><label class="adminFormLabel"> type (number): </label>
                     <input type="number" name="typeId" /> </div>
-                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+                <div><input class="adminBtn" type="submit" value="ADD" /></div>
             </form>
         </div>
         <div class="formWrapper col-6" style=" background-color: #fff0fa;">
@@ -45,7 +44,7 @@
                     <input type="text" name="name" /></div>
                 <div><label class="adminFormLabel"> price:  </label>
                     <input type="number" name="price" /></div>
-                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+                <div><input class="adminBtn" type="submit" value="ADD" /></div>
             </form>
         </div>
     </div>
@@ -59,7 +58,7 @@
                     <input type="text" name="mark" /></div>
                 <div><label class="adminFormLabel"> price: </label>
                     <input type="number" name="price" /> </div>
-                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+                <div><input class="adminBtn" type="submit" value="ADD" /></div>
             </form>
         </div>
         <div class="formWrapper col-6" >
@@ -78,7 +77,7 @@
                     <input type="file" name="picture" /></div>
                 <div><label class="adminFormLabel"> pic: </label>
                     <input type="file" name="picture" /> </div>
-                <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+                <div><input class="adminBtn" type="submit" value="ADD" /></div>
             </form>
         </div>
     </div>
@@ -90,7 +89,7 @@
         <form th:action="@{/admin/addFacility}" method="post">
             <div><label class="adminFormLabel"> facility: </label>
                 <input type="text" name="name" /> </div>
-            <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+            <div><input class="adminBtn" type="submit" value="ADD" /></div>
         </form>
     </div>
     <div class="formWrapper col-6" style=" background-color: #fff0fa;">
@@ -101,7 +100,7 @@
                 <input type="number" name="fId" /> </div>
             <div><label class="adminFormLabel"> type:  </label>
                 <input type="number" name="tId" /></div>
-            <div><input class="adminBtn" type="submit" value="Sign In" /></div>
+            <div><input class="adminBtn" type="submit" value="ADD" /></div>
         </form>
     </div>
 </div>

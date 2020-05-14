@@ -91,19 +91,5 @@
     </div>
     <button type="submit">SUBMIT</button>
 </form>
-<!--<form method="post" th:object="${serviceAndCarRequestDto}" th:action="@{/addCarsAndServices}">-->
-<!--    <div class="tr-content" th:each="service: ${services}">-->
-<!--        <span style="color: red" th:text="${service.getServiceName()}"></span>-->
-<!--        <span style="color: red" th:text="${service.getPrice()}"></span>-->
-<!--        <input hidden="hidden" th:field="${cars.add()}" th:value="${service.getId()}">-->
-<!--    </div>-->
-<!--    <div th:each="car: ${cars}">-->
-<!--        <span style="color: red" th:text="${car.getMark()}"></span>-->
-<!--        <span style="color: red" th:text="${car.getPrice()}"></span>-->
-<!--        <input hidden="hidden" th:name="carId+${car.getId()}" th:value="${car.getId()}">-->
-<!--    </div>-->
-<!--    <button type="submit">SUBMIT</button>-->
-<!--</form>-->
-
 </body>
 </html>

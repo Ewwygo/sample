@@ -48,7 +48,7 @@
             <td th:text="${room.getDayCost()} * ${days}"></td>
             <td>
                 <form th:action="@{/facility}">
-                    <button type="submit" th:text="${room.getTypeRoom().getTypeRoom()}"></button>
+                    <button type="submit" style="border-radius: 7px" th:text="${room.getTypeRoom().getTypeRoom()}"></button>
                     <input hidden th:value="${room.getTypeRoom().getId()}" name="typeRoom">
                 </form>
             </td>
@@ -57,13 +57,12 @@
                     <input hidden="hidden" name="roomId" th:value="${room.getId()}">
                     <input hidden="hidden" name="checkIn" type="text" th:value="${checkIn}">
                     <input hidden="hidden" name="checkOut" type="text" th:value="${checkOut}">
-                    <button class="btn btn-danger" type="submit">Booking</button>
+                    <button class="button" type="submit">Booking</button>
                 </form>
                 <div th:if="${userAuthorities}">
-                    <br>
                     <form  th:action="@{/admin/deleteRoom}" method="post">
                         <input hidden="hidden" name="roomId" th:value="${room.getId()}">
-                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <button class="button" type="submit">Delete</button>
                     </form>
                 </div>
 

@@ -3,7 +3,6 @@ package com.netcracker.denisik.controllers;
 import com.netcracker.denisik.entity.*;
 import com.netcracker.denisik.repository.FacilitiesRepository;
 import com.netcracker.denisik.repository.ResidenceRepository;
-import com.netcracker.denisik.repository.RoomRepository;
 import com.netcracker.denisik.repository.TypeRoomRepository;
 import com.netcracker.denisik.services.RoomService;
 import com.netcracker.denisik.userDetails.UserDetailsImpl;
@@ -17,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
@@ -81,6 +79,6 @@ public class RoomController {
         }
         model.addAttribute("pics", list);
 //        model.addAttribute("image", new String(encode, "UTF-8"));
-        return "BusinessTypeInfo";
+        return "RoomTypeInfo";
     }
 }

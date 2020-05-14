@@ -20,10 +20,11 @@
 </head>
 <body>
 <div class="backLayer">
-    <h2 class="title">Feel the atmosphere of St.Ermin's Hotel !<br th:text="'How do you like our '+ ${typeRoom.getTypeRoom()} +' ?'"></h2>
+    <h2 class="title">Feel the atmosphere of St.Ermin's Hotel !<br
+            th:text="'How do you like our '+ ${typeRoom.getTypeRoom()} +' ?'"></h2>
 
     <input checked type="radio" name="respond" id="desktop">
-    <div>
+    <div class="wrapper">
         <article id="slider">
             <input checked type="radio" name="slider" id="switch1">
             <input type="radio" name="slider" id="switch2">
@@ -34,7 +35,7 @@
                 <div id="overflow">
                     <div class="image">
                         <article th:each="pic: ${pics}">
-                            <img th:src="*{'data:image/jpg;base64,'+ pic}" alt="#" />
+                            <img th:src="*{'data:image/jpg;base64,'+ pic}" alt="#"/>
                         </article>
                     </div>
                 </div>
@@ -47,8 +48,12 @@
                 <label for="switch5"></label>
             </div>
         </article>
-        <div th:each="facility: ${typeRoom.getFacilitiesSet()}">
-            <span th:text="${facility.getFacility()}"></span>
+
+        <div class="description"><b>Facilities:</b>
+            <div  th:each="facility: ${typeRoom.getFacilitiesSet()}">
+<!--                <div class="description__facilities"></div>-->
+              <ul><li> <span th:text="${facility.getFacility()}"></span></li></ul>
+            </div>
         </div>
     </div>
 </div>

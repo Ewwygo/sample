@@ -24,10 +24,10 @@
 <div class="backLayer">
 
     <div>
-        <h1 class="title wow slideInDown">
-            <div >
-                <form style="width: 10%" th:if="${user != null}" th:action="@{/logout}" method="post">
-                    <input style="width: 30px" type="image" name="submit" th:src="@{/css/img/exit.png}">
+        <h1 class="title wow slideInDown" style="text-align: center">
+            <div>
+                <form style="width: 40px; margin-right: 0px; display: inline-block; padding: 10px;" th:if="${user != null}" th:action="@{/logout}" method="post">
+                    <input style="width: 40px; height: 40px" type="image" name="submit" th:src="@{/css/img/exit.png}">
                 </form>
                 <span>Welcome to St. Ermin's Hotel</span>
                 <a th:if="${user} == null" th:href="@{/login}"><img style="width: 40px; margin-bottom: 22px" th:src="@{/css/img/login.png}"></a>
@@ -160,7 +160,6 @@
     <br/>
     <br/>
     <br/>
-    <br/>
     <!--    <table width="100%" cellspacing="0" style="background-color: #8E064B; opacity: 0.8; color: white">-->
     <table>
         <tr>
@@ -175,7 +174,7 @@
             </td>
             <td>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1864.670151430143!2d-80.18643721726593!3d25.77778855937533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b4206607af1b%3A0x4154ff5e01705f30!2z0JTQsNGD0L3RgtCw0YPQvSDQnNCw0LnQsNC80LgsINCc0LDQudCw0LzQuCwg0KTQu9C-0YDQuNC00LAgMzMxMzIsINCh0KjQkA!5e0!3m2!1sru!2sby!4v1589297826990!5m2!1sru!2sby"
-                        width="480" height="400" frameborder="0" style="border:0; margin-top: 50px"
+                        width="950" height="400" frameborder="0" style="border:0; margin-top: 50px"
                         allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </td>
         </tr>
